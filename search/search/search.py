@@ -90,7 +90,24 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    closed = dict()
+    pila = util.Stack()
+    pila.push(problem.getStartState())
+    
+    right_solution = problem.isGoalState(problem.getStartState()
+                                   
+    while(!right_solution):
+        node = pila.pop()
+        if problem.isGoalState(node):
+            right_solution = True
+            #return s
+            pass
+        if node not in closed:
+            closed[node] = 
+            
+        
+    
+    #util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
