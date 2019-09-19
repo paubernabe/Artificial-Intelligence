@@ -90,29 +90,42 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
-    closed = dict()
+
+    closed = set()
     pila = util.Stack()
-    pila.push(problem.getStartState())
-    
-    right_solution = problem.isGoalState(problem.getStartState()
-                                   
-    while(!right_solution):
-        node = pila.pop()
+    pila.push((problem.getStartState(),[], 0))
+
+    while not pila.isEmpty():
+        node, path, cost = pila.pop()
+
         if problem.isGoalState(node):
-            right_solution = True
-            #return s
-            pass
+            return path
+
         if node not in closed:
-            closed[node] = 
-            
-        
-    
-    #util.raiseNotDefined()
+            closed.add(node)
+            for i in problem.getSuccessors(node):
+                pila.push((i[0], path + [i[1]], cost+i[2]))
+
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    closed = set()
+    queue = util.Queue()
+    queue.push((problem.getStartState(), [], 0))
+
+    while not queue.isEmpty():
+        node, path, cost = queue.pop()
+
+        if problem.isGoalState(node):
+            return path
+
+        if node not in closed:
+            closed.add(node)
+            for i in problem.getSuccessors(node):
+                queue.push((i[0], path + [i[1]], cost+i[2]))
+
+
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
