@@ -22,6 +22,7 @@ Pacman agents (in searchAgents.py).
 
 import util
 
+
 class SearchProblem:
     """
     This class outlines the structure of a search problem, but doesn't implement
@@ -73,7 +74,8 @@ def tinyMazeSearch(problem):
     from game import Directions
     s = Directions.SOUTH
     w = Directions.WEST
-    return  [s, s, w, s, w, w, s, w]
+    return [s, s, w, s, w, w, s, w]
+
 
 def depthFirstSearch(problem):
     """
@@ -93,7 +95,7 @@ def depthFirstSearch(problem):
 
     closed = set()
     pila = util.Stack()
-    pila.push((problem.getStartState(),[], 0))
+    pila.push((problem.getStartState(), [], 0))
 
     while not pila.isEmpty():
         node, path, cost = pila.pop()
@@ -104,7 +106,7 @@ def depthFirstSearch(problem):
         if node not in closed:
             closed.add(node)
             for i in problem.getSuccessors(node):
-                pila.push((i[0], path + [i[1]], cost+i[2]))
+                pila.push((i[0], path + [i[1]], cost + i[2]))
 
 
 def breadthFirstSearch(problem):
@@ -123,14 +125,14 @@ def breadthFirstSearch(problem):
         if node not in closed:
             closed.add(node)
             for i in problem.getSuccessors(node):
-                queue.push((i[0], path + [i[1]], cost+i[2]))
-
+                queue.push((i[0], path + [i[1]], cost + i[2]))
 
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
+
 
 def nullHeuristic(state, problem=None):
     """
@@ -139,10 +141,27 @@ def nullHeuristic(state, problem=None):
     """
     return 0
 
+
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    pq = util.PriorityQueue()
+    closed = set()
+
+    pq.push((problem.getStartState(), [], 0), heuristic)
+
+    while not pq.isEmpty():
+
+        node = pq.pop()
+
+        if problem.isGoalState(node[0]):
+            return node[1]
+
+        if node[0] not in closed:
+            closed.add(node[0])
+            for i in problem.getSuccessors(node[0]):
+                pq.push((i[0], node[1] + [i[1]], node[2] + i[2]),heuristic)
+
 
 
 # Abbreviations
