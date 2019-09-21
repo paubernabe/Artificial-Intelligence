@@ -131,7 +131,21 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    pq = util.PriorityQueueWithFunction(util.PriorityQueue())
+    closed = set()
+
+    pq.push(problem.getStartState())
+
+    while not pq.isEmpty():
+        node, path, cost = pq.pop()
+
+        if problem.isGoalState(node):
+            return path
+
+        if node not in closed:
+            closed.add(node)
+            for i in problem.getSuccessors(node):
+                pq.push((i[0], path + [i[1]], cost + i[2]))
 
 
 def nullHeuristic(state, problem=None):
@@ -148,7 +162,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     pq = util.PriorityQueue()
     closed = set()
 
-    pq.push((problem.getStartState(), [], 0), heuristic)
+    pq.push((problem.getStartState(), [], 0), 0 + heuristic(problem.getStartState(), problem))
 
     while not pq.isEmpty():
 
@@ -160,7 +174,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         if node[0] not in closed:
             closed.add(node[0])
             for i in problem.getSuccessors(node[0]):
-                pq.push((i[0], node[1] + [i[1]], node[2] + i[2]),heuristic)
+                pq.push((i[0], node[1] + [i[1]], node[2] + i[2]), node[2] + i[2] + heuristic(i[0], problem))
 
 
 
