@@ -43,6 +43,7 @@ class SearchProblem:
 
         Returns True if and only if the state is a valid goal state.
         """
+
         util.raiseNotDefined()
 
     def getSuccessors(self, state):
