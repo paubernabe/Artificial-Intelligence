@@ -113,7 +113,7 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    closed = set()
+    closed = []
     queue = util.Queue()
     queue.push((problem.getStartState(), [], 0))
 
@@ -124,7 +124,7 @@ def breadthFirstSearch(problem):
             return path
 
         if node not in closed:
-            closed.add(node)
+            closed.append(node)
             for i in problem.getSuccessors(node):
                 queue.push((i[0], path + [i[1]], cost + i[2]))
 

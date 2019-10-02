@@ -290,25 +290,30 @@ class CornersProblem(search.SearchProblem):
         self._expanded = 0 # DO NOT CHANGE; Number of search nodes expanded
         # Please add any code here which you would like to use
         # in initializing the problem
-        self.goal_states = set()    #set of goal states
-
-        self._visited, self._visitedlist = {}, []
 
     def getStartState(self):
         """
         Returns the start state (in your state space, not the full Pacman state
         space)
+
+        We will return the startPosition and an empty set() in aim to keep
+        the visited corners in a structure
         """
-        return self.startingPosition
+        return self.startingPosition, set()
+
 
     def isGoalState(self, state):
         """
         Returns whether this search state is a goal state of the problem.
         """
-        if state in self.corners:
-            if state not in self.goal_states:
-                self.goal_states.add(state)
-        return self.corners == self.goal_states
+
+        goal_states = state[1]
+        if state[0] in self.corners:
+            if state[0] not in goal_states:
+                goal_states.add(state[0])
+
+        return len(goal_states) == 4
+
 
     def getSuccessors(self, state):
         """
@@ -325,19 +330,21 @@ class CornersProblem(search.SearchProblem):
         for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
             # Add a successor state to the successor list if the action is legal
             # Here's a code snippet for figuring out whether a new position hits a wall:
-            x,y = state
+            x, y = state[0]
+            goal_states = state[1]
+            succ_goal_states = set(goal_states)
             dx, dy = Actions.directionToVector(action)
             nextx, nexty = int(x + dx), int(y + dy)
             if not self.walls[nextx][nexty]:
                 nextState = (nextx, nexty)
-                cost = 1
-                successors.append((nextState, action, cost))
+                if nextState in self.corners:
+                    if nextState not in succ_goal_states:
+                        succ_goal_states.add(nextState)
+                successors.append(((nextState,succ_goal_states), action, 1))
+
 
         # Bookkeeping for display purposes
         self._expanded += 1  # DO NOT CHANGE
-        if state not in self._visited:
-            self._visited[state] = True
-            self._visitedlist.append(state)
         return successors
 
     def getCostOfActions(self, actions):
