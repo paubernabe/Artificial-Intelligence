@@ -161,7 +161,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
     pq = util.PriorityQueue()
-    closed = set()
+    closed = list()
 
     pq.push((problem.getStartState(), [], 0), 0 + heuristic(problem.getStartState(), problem))
 
@@ -173,7 +173,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
             return node[1]
 
         if node[0] not in closed:
-            closed.add(node[0])
+            closed.append(node[0])
             for i in problem.getSuccessors(node[0]):
                 pq.push((i[0], node[1] + [i[1]], node[2] + i[2]), node[2] + i[2] + heuristic(i[0], problem))
 
