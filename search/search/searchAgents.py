@@ -383,10 +383,25 @@ def cornersHeuristic(state, problem):
     unvisited_corners = set()
     manhattan_distances = set()
 
+    """
+    We check if this current state still got corners
+    to visit. The coordinates of not visited corners
+    will be stored in a set.
+    """
     for i in corners:
         if i not in visited:
             unvisited_corners.add(i)
-
+    """
+    while the not visited corners set isn't empty, we iterate through it.
+    we calculate the manhattan distance from the current state to each one 
+    of the unvisited corners.
+    We are interested in the corner that it has been reached with the minimum
+    manhattan distance.
+    When we get the minimum corner, we delete the corner from the unvisited list 
+    and sum manhattan distance to a variable.
+    Then, our current state will be the minimum corner.
+    Once the unvisited corners list is empty, we return the accumulated value
+    """
     while unvisited_corners:
         for i in unvisited_corners:
             manhattan_distances.add((util.manhattanDistance(node, i), i))
@@ -489,6 +504,11 @@ def foodHeuristic(state, problem):
     """
 
     position, foodGrid = state
+    """
+    '''
+    Using the same code implementation as the corners heuristic, we expand about 5000 nodes.
+    But autograder tells us that isn't admisible.
+    '''
     accumulated_cost = 0
     manhattan_distances = set()
     unvisited = set()
@@ -505,13 +525,35 @@ def foodHeuristic(state, problem):
         accumulated_cost += min_food_candidate[0]
 
     return accumulated_cost
+    """
+    nearest_food_val = float('inf')
+    furthest_food_val = 0
+    nearest_food = None
+    """
+    First of all we search our closest food using the manhattan distance
+    """
+    if len(foodGrid.asList()):
+        for i in foodGrid.asList():
+            tmp_nearest = util.manhattanDistance(position, i)
+            if tmp_nearest < nearest_food_val:
+                nearest_food_val = tmp_nearest
+                nearest_food = i
+    else: # if there's no food left, we return 0. We have reached our last target
+        return 0
+    """
+    Then, we search the furthest food from our closest one. 
+    """
+    for j in foodGrid.asList():
+        tmp_furthest = util.manhattanDistance(nearest_food, j)
+        if tmp_furthest > furthest_food_val:
+            furthest_food_val = tmp_furthest
+    """
+    This function will return the sum of the max and min distance.
+    We use this type of "extremes" heuristic in aim to find out if the closest
+    food is the one with the best accumulated cost. Sometimes this is false.
+    """
+    return nearest_food_val + furthest_food_val
 
-    """
-    L'autograder em qualifica aquest exercici amb un 0/4, però com diu al comentari inicial d'aquesta
-    funció, algunes implementacions poden no ser admissibles però alhora poden ser una solució òptima
-    al problema plantejat.
-    
-    """
 
 
 class ClosestDotSearchAgent(SearchAgent):
