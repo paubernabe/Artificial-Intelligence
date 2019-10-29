@@ -74,16 +74,12 @@ class ReflexAgent(Agent):
         newGhostStates = successorGameState.getGhostStates()
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
-        if (len(newScaredTimes) == 0):
-            max_d_ghost = max([util.manhattanDistance(newPos, i.getPosition()) for i in newGhostStates])
-        else:
-            max_d_ghost = min([util.manhattanDistance(newPos, i.getPosition()) for i in newGhostStates])
 
+        max_d_ghost = max([util.manhattanDistance(newPos, i.getPosition()) for i in newGhostStates])
 
         min_d_food = 0
         if (newFood.asList()):
             min_d_food = min([util.manhattanDistance(newPos, i) for i in newFood.asList()])
-
 
         return successorGameState.getScore() + max_d_ghost - min_d_food
 
@@ -139,6 +135,37 @@ class MinimaxAgent(MultiAgentSearchAgent):
           gameState.getNumAgents():
             Returns the total number of agents in the game
         """
+        """
+        In this part of code, we return the action with max value
+        """
+        actions = list()
+        for action in gameState.getLegalActions(0):
+            action_value = self.min_v(gameState.generateSuccessor(0, action), 1, 0)
+            actions.append((action_value, action))
+        return max(actions)[1]
+    "max_v and min_v funcs return a value"
+    def max_v(self, state, depth):
+        if depth == self.depth or len(state.getLegalActions(0)) == 0 or state.isLose() or state.isWin():
+            return self.evaluationFunction(state)
+        successors = set()
+        for action in state.getLegalActions(0):
+            succ = state.generateSuccessor(0, action)
+            successors.add(succ)
+        v = max([self.min_v(s, 1, depth) for s in successors])
+        return v
+
+    def min_v(self, state, agent, depth):
+        if len(state.getLegalActions(agent)) == 0 or state.isLose() or state.isWin():
+            return self.evaluationFunction(state)
+        successors = set()
+        for action in state.getLegalActions(agent):
+            succ = state.generateSuccessor(agent, action)
+            successors.add(succ)
+        if agent < state.getNumAgents() - 1:
+            v = min([self.min_v(s, agent+1, depth) for s in successors])
+        else:
+            v = min([self.max_v(s, depth+1) for s in successors])
+        return v
 
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
@@ -150,8 +177,14 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         """
           Returns the minimax action using self.depth and self.evaluationFunction
         """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+
+        pass
+    def max_value(self, state, alpha, beta):
+        v = float("-inf")
+
+    def min_value(self, state, alpha, beta):
+        v = float("inf")
+
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
     """
