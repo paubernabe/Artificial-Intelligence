@@ -147,24 +147,26 @@ class MinimaxAgent(MultiAgentSearchAgent):
     def max_v(self, state, depth):
         if depth == self.depth or len(state.getLegalActions(0)) == 0 or state.isLose() or state.isWin():
             return self.evaluationFunction(state)
+        v = float("-inf")
         successors = set()
         for action in state.getLegalActions(0):
             succ = state.generateSuccessor(0, action)
             successors.add(succ)
-        v = max([self.min_v(s, 1, depth) for s in successors])
+        v = max([v] + [self.min_v(s, 1, depth) for s in successors])
         return v
 
     def min_v(self, state, agent, depth):
         if len(state.getLegalActions(agent)) == 0:
             return self.evaluationFunction(state)
+        v = float("inf")
         successors = set()
         for action in state.getLegalActions(agent):
             succ = state.generateSuccessor(agent, action)
             successors.add(succ)
         if agent < state.getNumAgents() - 1:
-            v = min([self.min_v(s, agent+1, depth) for s in successors])
+            v = min([v] + [self.min_v(s, agent+1, depth) for s in successors])
         else:
-            v = min([self.max_v(s, depth+1) for s in successors])
+            v = min([v] + [self.max_v(s, depth+1) for s in successors])
         return v
 
 
@@ -208,7 +210,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             successors.add(succ)
         if agent < state.getNumAgents()-1:
             for s in successors:
-                v = min(v,self.min_value(s, depth, agent + 1, alpha, beta))
+                v = min(v, self.min_value(s, depth, agent + 1, alpha, beta))
                 if v <= alpha:
                     return v
                 beta = min(v, beta)
