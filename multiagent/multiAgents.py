@@ -145,7 +145,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         return max(actions)[1]
     "max_v and min_v funcs return a value"
     def max_v(self, state, depth):
-        if depth == self.depth or len(state.getLegalActions(0)) == 0 or state.isLose() or state.isWin():
+        if depth == self.depth or len(state.getLegalActions(0)) == 0:
             return self.evaluationFunction(state)
         v = float("-inf")
         successors = set()
@@ -164,8 +164,16 @@ class MinimaxAgent(MultiAgentSearchAgent):
             succ = state.generateSuccessor(agent, action)
             successors.add(succ)
         if agent < state.getNumAgents() - 1:
+            """
+                We must iterate all legal actions and then if the agent ID exists,
+                we call the min_value recursively and we change to another ghost.
+            """
             v = min([v] + [self.min_v(s, agent+1, depth) for s in successors])
         else:
+            """
+                If agent does not exist, it means that it's pacman turn.
+                so we call to max value function and we go another level down in depth
+            """
             v = min([v] + [self.max_v(s, depth+1) for s in successors])
         return v
 
@@ -179,48 +187,41 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         """
           Returns the minimax action using self.depth and self.evaluationFunction
         """
-        actions = list()
-        for action in gameState.getLegalActions(0):
-            action_value = self.min_value(gameState.generateSuccessor(0, action), 1, 0, float("-inf"), float("inf"))
-            actions.append((action_value, action))
-        return max(actions)[1]
+        return self.max_value(gameState, 0,  float("-inf"), float("inf"))[1]
 
     def max_value(self, state, depth, alpha, beta):
         if len(state.getLegalActions(0)) == 0 or self.depth == depth:
-            return self.evaluationFunction(state)
-        v = float("-inf")
-        successors = set()
+            return self.evaluationFunction(state), None
+        v = (float("-inf"), None)
         for action in state.getLegalActions(0):
-            succ = state.generateSuccessor(0, action)
-            successors.add(succ)
-        for s in successors:
-            v = max(v, self.min_value(s, depth, 1, alpha, beta))
-            if v >= beta:
+            successor = self.min_value(state.generateSuccessor(0, action), depth, 1, alpha, beta)
+            succ_action = (successor[0], action)
+            v = max(succ_action, v)
+            if v[0] > beta:
                 return v
-            alpha = max(v, alpha)
+            alpha = max(v[0], alpha)
         return v
 
     def min_value(self, state, depth, agent, alpha, beta):
         if len(state.getLegalActions(agent)) == 0:
-            return self.evaluationFunction(state)
-        v = float("inf")
-        successors = set()
-        for action in state.getLegalActions(0):
-            succ = state.generateSuccessor(0, action)
-            successors.add(succ)
-        if agent < state.getNumAgents()-1:
-            for s in successors:
-                v = min(v, self.min_value(s, depth, agent + 1, alpha, beta))
-                if v <= alpha:
-                    return v
-                beta = min(v, beta)
-        else:
-            for s in successors:
-                v = min(v, self.max_value(s, depth + 1, alpha, beta))
-                if v <= alpha:
-                    return v
-                beta = min(v, beta)
+            return self.evaluationFunction(state), None
+        v = (float("inf"), None)
+        nextghost = agent + 1
+        if agent == state.getNumAgents() - 1:
+            nextghost = 0
+        for action in state.getLegalActions(agent):
+            if nextghost > 0:
+                successor = self.min_value(state.generateSuccessor(agent, action), depth, nextghost, alpha, beta)
+            else:
+                successor = self.max_value(state.generateSuccessor(agent, action), depth + 1, alpha, beta)
+            succ_action = (successor[0], action)
+            v = min(succ_action, v)
+            if v[0] < alpha:
+                return v
+            beta = min(v[0], beta)
         return v
+
+
 
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
