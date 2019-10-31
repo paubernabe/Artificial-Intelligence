@@ -138,44 +138,36 @@ class MinimaxAgent(MultiAgentSearchAgent):
         """
         In this part of code, we return the action with max value
         """
-        actions = list()
-        for action in gameState.getLegalActions(0):
-            action_value = self.min_v(gameState.generateSuccessor(0, action), 1, 0)
-            actions.append((action_value, action))
-        return max(actions)[1]
-    "max_v and min_v funcs return a value"
-    def max_v(self, state, depth):
-        if depth == self.depth or len(state.getLegalActions(0)) == 0:
-            return self.evaluationFunction(state)
-        v = float("-inf")
-        successors = set()
+
+        return self.max_value(gameState, 0)[1]
+
+    def max_value(self, state, depth):
+        if len(state.getLegalActions(0)) == 0 or self.depth == depth:
+            return self.evaluationFunction(state), None
+        v = (float("-inf"), None)
         for action in state.getLegalActions(0):
-            succ = state.generateSuccessor(0, action)
-            successors.add(succ)
-        v = max([v] + [self.min_v(s, 1, depth) for s in successors])
+            successor = self.min_value(state.generateSuccessor(0, action), depth, 1)
+            succ_action = (successor[0], action)
+            v = max(succ_action, v)
         return v
 
-    def min_v(self, state, agent, depth):
+    def min_value(self, state, depth, agent):
         if len(state.getLegalActions(agent)) == 0:
-            return self.evaluationFunction(state)
-        v = float("inf")
-        successors = set()
+            return self.evaluationFunction(state), None
+        v = (float("inf"), None)
+        nextghost = agent + 1
+        if agent == state.getNumAgents() - 1:
+            nextghost = 0
         for action in state.getLegalActions(agent):
-            succ = state.generateSuccessor(agent, action)
-            successors.add(succ)
-        if agent < state.getNumAgents() - 1:
-            """
-                We must iterate all legal actions and then if the agent ID exists,
-                we call the min_value recursively and we change to another ghost.
-            """
-            v = min([v] + [self.min_v(s, agent+1, depth) for s in successors])
-        else:
-            """
-                If agent does not exist, it means that it's pacman turn.
-                so we call to max value function and we go another level down in depth
-            """
-            v = min([v] + [self.max_v(s, depth+1) for s in successors])
+            if nextghost > 0:
+                successor = self.min_value(state.generateSuccessor(agent, action), depth, nextghost)
+            else:
+                successor = self.max_value(state.generateSuccessor(agent, action), depth + 1)
+            succ_action = (successor[0], action)
+            v = min(succ_action, v)
+
         return v
+
 
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
@@ -236,8 +228,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           All ghosts should be modeled as choosing uniformly at random from their
           legal moves.
         """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+
 
 def betterEvaluationFunction(currentGameState):
     """
