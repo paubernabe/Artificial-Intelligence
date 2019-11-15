@@ -19,6 +19,7 @@ import random, util
 
 from game import Agent
 
+
 class ReflexAgent(Agent):
     """
       A reflex agent chooses an action at each choice point by examining
@@ -28,7 +29,6 @@ class ReflexAgent(Agent):
       it in any way you see fit, so long as you don't touch our method
       headers.
     """
-
 
     def getAction(self, gameState):
         """
@@ -46,7 +46,7 @@ class ReflexAgent(Agent):
         scores = [self.evaluationFunction(gameState, action) for action in legalMoves]
         bestScore = max(scores)
         bestIndices = [index for index in range(len(scores)) if scores[index] == bestScore]
-        chosenIndex = random.choice(bestIndices) # Pick randomly among the best
+        chosenIndex = random.choice(bestIndices)  # Pick randomly among the best
 
         "Add more of your code here if you want to"
 
@@ -74,7 +74,6 @@ class ReflexAgent(Agent):
         newGhostStates = successorGameState.getGhostStates()
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
-
         max_d_ghost = max([util.manhattanDistance(newPos, i.getPosition()) for i in newGhostStates])
 
         min_d_food = 0
@@ -82,6 +81,7 @@ class ReflexAgent(Agent):
             min_d_food = min([util.manhattanDistance(newPos, i) for i in newFood.asList()])
 
         return successorGameState.getScore() + max_d_ghost - min_d_food
+
 
 def scoreEvaluationFunction(currentGameState):
     """
@@ -92,6 +92,7 @@ def scoreEvaluationFunction(currentGameState):
       (not reflex agents).
     """
     return currentGameState.getScore()
+
 
 class MultiAgentSearchAgent(Agent):
     """
@@ -108,10 +109,11 @@ class MultiAgentSearchAgent(Agent):
       is another abstract class.
     """
 
-    def __init__(self, evalFn = 'scoreEvaluationFunction', depth = '2'):
-        self.index = 0 # Pacman is always agent index 0
+    def __init__(self, evalFn='scoreEvaluationFunction', depth='2'):
+        self.index = 0  # Pacman is always agent index 0
         self.evaluationFunction = util.lookup(evalFn, globals())
         self.depth = int(depth)
+
 
 class MinimaxAgent(MultiAgentSearchAgent):
     """
@@ -176,7 +178,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         """
           Returns the minimax action using self.depth and self.evaluationFunction
         """
-        return self.alphabeta(gameState, 0, 0, (float("-inf"),None), (float("inf"), None), True)[1]
+        return self.alphabeta(gameState, 0, 0, (float("-inf"), None), (float("inf"), None), True)[1]
 
     def alphabeta(self, state, agent, depth, alpha, beta, maximize):
         if depth == self.depth or len(state.getLegalActions(agent)) == 0:
@@ -195,13 +197,15 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         else:
             v = float('inf'), None
             nextagent = agent + 1
-            if agent == state.getNumAgents()-1:
+            if agent == state.getNumAgents() - 1:
                 nextagent = 0
             for action in state.getLegalActions(agent):
                 if nextagent > 0:
-                    successor = self.alphabeta(state.generateSuccessor(agent, action), nextagent, depth, alpha, beta, False)
+                    successor = self.alphabeta(state.generateSuccessor(agent, action), nextagent, depth, alpha, beta,
+                                               False)
                 else:
-                    successor = self.alphabeta(state.generateSuccessor(agent, action), nextagent, depth+1, alpha, beta, True)
+                    successor = self.alphabeta(state.generateSuccessor(agent, action), nextagent, depth + 1, alpha,
+                                               beta, True)
                 candidate_beta = (successor[0], action)
                 v = min(candidate_beta, v)
                 if v[0] < alpha[0]:
@@ -222,7 +226,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           All ghosts should be modeled as choosing uniformly at random from their
           legal moves.
         """
-        return self.expectimax(gameState,0, 0, True)[1]
+        return self.expectimax(gameState, 0, 0, True)[1]
 
     def expectimax(self, state, agent, depth, maximize):
         if depth == self.depth or len(state.getLegalActions(agent)) == 0:
@@ -249,7 +253,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
                 else:
                     successor = self.expectimax(state.generateSuccessor(agent, action), nextagent, depth + 1, True)
                     v += successor[0]
-            return v/num_acciones , action
+            return v / num_acciones, action
 
 
 def betterEvaluationFunction(currentGameState):
@@ -260,8 +264,18 @@ def betterEvaluationFunction(currentGameState):
       DESCRIPTION: <write something here so we know what you did>
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    newPos = currentGameState.getPacmanPosition()
+    newFood = currentGameState.getFood()
+    newGhostStates = currentGameState.getGhostStates()
+
+    max_d_ghost = max([util.manhattanDistance(newPos, i.getPosition()) for i in newGhostStates])
+    min_d_food = 0
+    if newFood.asList():
+        min_d_food = min([util.manhattanDistance(newPos, i) for i in newFood.asList()])
+
+    return currentGameState.getScore() + max_d_ghost - min_d_food
+
 
 # Abbreviation
 better = betterEvaluationFunction
-
