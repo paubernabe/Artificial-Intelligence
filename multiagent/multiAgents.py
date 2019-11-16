@@ -74,6 +74,13 @@ class ReflexAgent(Agent):
         newGhostStates = successorGameState.getGhostStates()
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
+        """
+        I've done the basic implementation that needs Reflex Agent to survive in
+        the maze.
+        The score that returns this function is basically the original score + the max distance
+        of the ghost - the min distance of food.
+        """
+
         max_d_ghost = max([util.manhattanDistance(newPos, i.getPosition()) for i in newGhostStates])
 
         min_d_food = 0
@@ -138,11 +145,22 @@ class MinimaxAgent(MultiAgentSearchAgent):
             Returns the total number of agents in the game
         """
         """
-        In this part of code, we return the action with max value
+        We call the function with agent 0 (pacman), depth 0 and maximize = True
         """
-
         return self.minimax(gameState, 0, 0, True)[1]
 
+    """
+    If agent does not have any legal moves or we are on our maximum depth, we will
+    return the evaluation func of the state
+    
+    Now let's see the two cases of minimax, maximize or not maximize:
+    
+    If we have to maximize, that means is pacman's turn. we will look through all legal actions and we'll see
+    which one maximize the most.
+    
+    If we have to minimize, that means it's ghosts turn, sometimes we have more than one ghost and we must control that.
+    We will return the movement that minimizes the most. 
+    """
     def minimax(self, state, agent, depth, maximize):
         if depth == self.depth or len(state.getLegalActions(agent)) == 0:
             return self.evaluationFunction(state), None
@@ -157,7 +175,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         else:
             v = float('inf'), None
             nextagent = agent + 1
-            if agent == state.getNumAgents() - 1:
+            if agent == state.getNumAgents() - 1: # when ghosts turn is over, nextagent will be pacman
                 nextagent = 0
             for action in state.getLegalActions(agent):
                 if nextagent > 0:
@@ -180,6 +198,11 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         """
         return self.alphabeta(gameState, 0, 0, (float("-inf"), None), (float("inf"), None), True)[1]
 
+    """
+    This function works as the minimax explained before, but we stop exploring states that we think that won't be
+    good for us using alpha beta pruning.
+    
+    """
     def alphabeta(self, state, agent, depth, alpha, beta, maximize):
         if depth == self.depth or len(state.getLegalActions(agent)) == 0:
             return self.evaluationFunction(state), None
@@ -227,7 +250,14 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           legal moves.
         """
         return self.expectimax(gameState, 0, 0, True)[1]
-
+    """
+    Expectimax also works like minimax, but is quite different.
+    
+    When we have to maximize, it works like minimax, we get the move with max value, but when we don't have to maximize,
+    we have to get the expected action. 
+    It's a simple calculus, we store the count the number of actions that we can do in a variable and we sum the value
+    of the action in other variable. We will return value/number of actions.
+    """
     def expectimax(self, state, agent, depth, maximize):
         if depth == self.depth or len(state.getLegalActions(agent)) == 0:
             return self.evaluationFunction(state), None
@@ -261,7 +291,8 @@ def betterEvaluationFunction(currentGameState):
       Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
       evaluation function (question 5).
 
-      DESCRIPTION: <write something here so we know what you did>
+      DESCRIPTION: I used the code of the Reflex Agent seen before, but instead focusing on
+      he future states, I've changed to focus only on current states. It works quite good.
     """
     "*** YOUR CODE HERE ***"
 
