@@ -1,0 +1,7 @@
++ Markov: alatorietat, probabilitat, no determinista
+El que es soluciona és el mateix que a la P1, la P3 té el factor d'alatorietat. A la P1 teniem un pla òptim, aqui tenim una política optima = conjunt d'accions que en promig maximitzen. Markov es basa en una premisa, com hem arribat en un estat no importa de cara el futur, podem descartar la historia previa dels estats anteriors, les accions que es poden pendre de cara endevant no depenen de com he arribat.
+
+PDM - sabem tot de la graella
+-pdm la info es va expandint a les cel.les
+RF - no sabem a priori res de la graella
+-rf va explorant sense saber els terminals
