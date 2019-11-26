@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c9ce9971-2555-43ba-8d7a-fb187b07520e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/multiagent.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autograder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ghostAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grading.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphicsDisplay.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphicsUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboardAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/capsuleClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/contestClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/mediumClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/minimaxClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/openClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/originalClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/smallClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/testClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/trappedClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/trickyClassic.lay" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/multiAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/multiagentTestClasses.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pacman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pacmanAgents.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectParams.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testClasses.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testParser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/extra/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/extra/grade-agent.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q1/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q1/grade-agent.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q1/grade-agent.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/0-lecture-6-tree.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/0-lecture-6-tree.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/0-small-tree.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/0-small-tree.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-1-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-1-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-2-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-2-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-3-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-3-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-4-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-4-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-5-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-5-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-6-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-6-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-7-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-7-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-8-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/1-8-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-1a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-1a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-1b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-1b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-2a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-2a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-2b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-2b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-3a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-3a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-3b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-3b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-4a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-4a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-4b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-4b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-one-ghost-3level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/2-one-ghost-3level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/3-one-ghost-4level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/3-one-ghost-4level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/4-two-ghosts-3level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/4-two-ghosts-3level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/5-two-ghosts-4level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/5-two-ghosts-4level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/6-tied-root.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/6-tied-root.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/7-pacman-game.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/7-pacman-game.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q2/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/0-lecture-6-tree.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/0-lecture-6-tree.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/0-small-tree.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/0-small-tree.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-1-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-1-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-2-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-2-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-3-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-3-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-4-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-4-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-5-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-5-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-6-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-6-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-7-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-7-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-8-minmax.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/1-8-minmax.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-1a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-1a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-1b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-1b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-2a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-2a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-2b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-2b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-3a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-3a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-3b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-3b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-4a-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-4a-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-4b-vary-depth.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-4b-vary-depth.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-one-ghost-3level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/2-one-ghost-3level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/3-one-ghost-4level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/3-one-ghost-4level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/4-two-ghosts-3level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/4-two-ghosts-3level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/5-two-ghosts-4level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/5-two-ghosts-4level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/6-tied-root.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/6-tied-root.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/7-pacman-game.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/7-pacman-game.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q3/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/0-expectimax1.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/0-expectimax1.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/1-expectimax2.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/1-expectimax2.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/2-one-ghost-3level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/2-one-ghost-3level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/3-one-ghost-4level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/3-one-ghost-4level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/4-two-ghosts-3level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/4-two-ghosts-3level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/5-two-ghosts-4level.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/5-two-ghosts-4level.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/6-pacman-game.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/6-pacman-game.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q4/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q5/CONFIG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q5/grade-agent.solution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q5/grade-agent.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textDisplay.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1SZhmAOLqPoNmXTSp8lZ7R4Rfri" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BernabeConstansPau" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c9ce9971-2555-43ba-8d7a-fb187b07520e" name="Default Changelist" comment="" />
+      <created>1571777181788</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571777181788</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
