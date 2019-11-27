@@ -42,8 +42,7 @@ class QLearningAgent(ReinforcementAgent):
     def __init__(self, **args):
         "You can initialize Q-values here..."
         ReinforcementAgent.__init__(self, **args)
-
-        self.Qvalues = {}
+        self.q_values = {}
 
     def getQValue(self, state, action):
         """
@@ -51,8 +50,8 @@ class QLearningAgent(ReinforcementAgent):
           Should return 0.0 if we have never seen a state
           or the Q node value otherwise
         """
-        if (state, action) in self.Qvalues:
-            return self.Qvalues[(state, action)]
+        if (state, action) in self.q_values:
+            return self.q_values[(state, action)]
         else:
             return 0.0
 
@@ -111,9 +110,13 @@ class QLearningAgent(ReinforcementAgent):
             return action
         prob = self.epsilon
         coin = util.flipCoin(prob)
-        action = random.choice(legalActions)
-
-        return action
+        """
+        If coin == 1, we will select a random action. If coin!=1, we will get
+        the action with maximum value
+        """
+        if coin:
+            return random.choice(legalActions)
+        return self.computeActionFromQValues(state)
 
     def update(self, state, action, nextState, reward):
         """
@@ -124,8 +127,17 @@ class QLearningAgent(ReinforcementAgent):
           NOTE: You should never call this function,
           it will be called on your behalf
         """
-        self.Qvalues[(state, action)] = nextState, action
-        return self.Qvalues[(state, action)]
+        next_actions = self.getLegalActions(nextState)
+        """
+        If we still have legal actions, we apply the steps of q-learning formula. If we dont have any legal movements,
+        we are in a terminal state, max action will be 0 in that case.
+        """
+        max_action = 0
+        if next_actions:
+            max_action = max(self.getQValue(nextState, action) for action in next_actions)
+        self.q_values[(state, action)] = self.getQValue(state, action) + self.alpha * (reward + self.discount *
+                                                                        max_action - self.getQValue(state, action))
+
 
     def getPolicy(self, state):
         return self.computeActionFromQValues(state)
