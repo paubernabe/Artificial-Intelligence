@@ -22,10 +22,17 @@
 def question3():
     answerEpsilon = None
     answerLearningRate = None
+    """
+    After trying with multiple values of epsilon and learning rate, I can say that it isn't
+    possible to reach the end of the grid with only 50 iterations. I've tried with more than 100
+    and it worked in some cases.
+    The main problem is that the number of iterations is quite small.
+    """
     if answerEpsilon == None or answerLearningRate == None:
         return 'NOT POSSIBLE'
     return answerEpsilon, answerLearningRate
     # If not possible, return 'NOT POSSIBLE'
+
 
 if __name__ == '__main__':
     print 'Answers to analysis questions:'
